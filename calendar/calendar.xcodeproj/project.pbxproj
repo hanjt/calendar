@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		4EF838001BC6E3CF00012592 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF837FF1BC6E3CF00012592 /* main.m */; };
 		4EF838031BC6E3CF00012592 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF838021BC6E3CF00012592 /* AppDelegate.m */; };
-		4EF838061BC6E3CF00012592 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF838051BC6E3CF00012592 /* ViewController.m */; };
 		4EF838091BC6E3CF00012592 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF838071BC6E3CF00012592 /* Main.storyboard */; };
 		4EF8380B1BC6E3CF00012592 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF8380A1BC6E3CF00012592 /* Images.xcassets */; };
 		4EF8380E1BC6E3CF00012592 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF8380C1BC6E3CF00012592 /* LaunchScreen.xib */; };
 		4EF8381A1BC6E3CF00012592 /* calendarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF838191BC6E3CF00012592 /* calendarTests.m */; };
+		4EF8384F1BC7ED1200012592 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8384E1BC7ED1200012592 /* ViewController.m */; };
+		4EF838531BC7ED4E00012592 /* calendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF838511BC7ED4E00012592 /* calendarCell.m */; };
+		4EF838541BC7ED4E00012592 /* calendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF838521BC7ED4E00012592 /* calendarCell.xib */; };
+		4EF838581BC7F73D00012592 /* NSDate+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF838571BC7F73D00012592 /* NSDate+Addtion.m */; };
+		4EF8385B1BC7F75200012592 /* NSString+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8385A1BC7F75200012592 /* NSString+Addtion.m */; };
+		4EF8385E1BC7FC4F00012592 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8385D1BC7FC4F00012592 /* NSDate+convenience.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +37,23 @@
 		4EF837FF1BC6E3CF00012592 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4EF838011BC6E3CF00012592 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4EF838021BC6E3CF00012592 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4EF838041BC6E3CF00012592 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4EF838051BC6E3CF00012592 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4EF838081BC6E3CF00012592 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4EF8380A1BC6E3CF00012592 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4EF8380D1BC6E3CF00012592 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4EF838131BC6E3CF00012592 /* calendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF838181BC6E3CF00012592 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF838191BC6E3CF00012592 /* calendarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = calendarTests.m; sourceTree = "<group>"; };
+		4EF8384D1BC7ED1200012592 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4EF8384E1BC7ED1200012592 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4EF838501BC7ED4E00012592 /* calendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = calendarCell.h; sourceTree = "<group>"; };
+		4EF838511BC7ED4E00012592 /* calendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calendarCell.m; sourceTree = "<group>"; };
+		4EF838521BC7ED4E00012592 /* calendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = calendarCell.xib; sourceTree = "<group>"; };
+		4EF838561BC7F73D00012592 /* NSDate+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Addtion.h"; sourceTree = "<group>"; };
+		4EF838571BC7F73D00012592 /* NSDate+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Addtion.m"; sourceTree = "<group>"; };
+		4EF838591BC7F75200012592 /* NSString+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addtion.h"; sourceTree = "<group>"; };
+		4EF8385A1BC7F75200012592 /* NSString+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addtion.m"; sourceTree = "<group>"; };
+		4EF8385C1BC7FC4F00012592 /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
+		4EF8385D1BC7FC4F00012592 /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +95,10 @@
 		4EF837FC1BC6E3CF00012592 /* calendar */ = {
 			isa = PBXGroup;
 			children = (
+				4EF838551BC7F71100012592 /* category */,
+				4EF8384C1BC7ED1200012592 /* UI */,
 				4EF838011BC6E3CF00012592 /* AppDelegate.h */,
 				4EF838021BC6E3CF00012592 /* AppDelegate.m */,
-				4EF838041BC6E3CF00012592 /* ViewController.h */,
-				4EF838051BC6E3CF00012592 /* ViewController.m */,
 				4EF838071BC6E3CF00012592 /* Main.storyboard */,
 				4EF8380A1BC6E3CF00012592 /* Images.xcassets */,
 				4EF8380C1BC6E3CF00012592 /* LaunchScreen.xib */,
@@ -117,6 +131,31 @@
 				4EF838181BC6E3CF00012592 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4EF8384C1BC7ED1200012592 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4EF8384D1BC7ED1200012592 /* ViewController.h */,
+				4EF8384E1BC7ED1200012592 /* ViewController.m */,
+				4EF838501BC7ED4E00012592 /* calendarCell.h */,
+				4EF838511BC7ED4E00012592 /* calendarCell.m */,
+				4EF838521BC7ED4E00012592 /* calendarCell.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		4EF838551BC7F71100012592 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				4EF838561BC7F73D00012592 /* NSDate+Addtion.h */,
+				4EF838571BC7F73D00012592 /* NSDate+Addtion.m */,
+				4EF838591BC7F75200012592 /* NSString+Addtion.h */,
+				4EF8385A1BC7F75200012592 /* NSString+Addtion.m */,
+				4EF8385C1BC7FC4F00012592 /* NSDate+convenience.h */,
+				4EF8385D1BC7FC4F00012592 /* NSDate+convenience.m */,
+			);
+			path = category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +241,7 @@
 				4EF838091BC6E3CF00012592 /* Main.storyboard in Resources */,
 				4EF8380E1BC6E3CF00012592 /* LaunchScreen.xib in Resources */,
 				4EF8380B1BC6E3CF00012592 /* Images.xcassets in Resources */,
+				4EF838541BC7ED4E00012592 /* calendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +259,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EF838061BC6E3CF00012592 /* ViewController.m in Sources */,
+				4EF8385E1BC7FC4F00012592 /* NSDate+convenience.m in Sources */,
 				4EF838031BC6E3CF00012592 /* AppDelegate.m in Sources */,
+				4EF8384F1BC7ED1200012592 /* ViewController.m in Sources */,
 				4EF838001BC6E3CF00012592 /* main.m in Sources */,
+				4EF838581BC7F73D00012592 /* NSDate+Addtion.m in Sources */,
+				4EF838531BC7ED4E00012592 /* calendarCell.m in Sources */,
+				4EF8385B1BC7F75200012592 /* NSString+Addtion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = calendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -358,6 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = calendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -416,6 +462,7 @@
 				4EF8381F1BC6E3CF00012592 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4EF838201BC6E3CF00012592 /* Build configuration list for PBXNativeTarget "calendarTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +471,7 @@
 				4EF838221BC6E3CF00012592 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
