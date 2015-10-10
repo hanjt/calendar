@@ -107,8 +107,8 @@
                                     <constraint firstItem="cC0-55-Q2o" firstAttribute="height" secondItem="5nx-wF-w7E" secondAttribute="height" id="y4m-o0-hci"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pZb-q3-dsk">
-                                <rect key="frame" x="6" y="70" width="308" height="264.5"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pZb-q3-dsk">
+                                <rect key="frame" x="6" y="70" width="308" height="264"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pZb-q3-dsk" secondAttribute="height" multiplier="7:6" id="xOW-3k-LrF"/>

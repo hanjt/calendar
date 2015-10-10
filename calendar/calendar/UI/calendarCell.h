@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface calendarCell : UICollectionViewCell
-@property (nonatomic, retain) NSIndexPath *indexPath;
--(void)setDate;
+-(void)setDateWithIndex:(NSIndexPath *)indexPath;
 @end

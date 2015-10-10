@@ -27,11 +27,11 @@ static NSString *identifier = @"calendarCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
+    [self today];
 }
 
 - (void)initUI{
     [self.collectionView registerNib:[UINib nibWithNibName:identifier bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:identifier];
-    [self today];
 }
 
 -(void)today{
@@ -45,9 +45,8 @@ static NSString *identifier = @"calendarCell";
         firstWeekDay -= 7;
     }
     
-    NSIndexPath *mid_index = [NSIndexPath indexPathForRow:currentPage * 42 inSection:0];
+    NSIndexPath *mid_index = [NSIndexPath indexPathForItem:currentPage * 42 inSection:0];
     [self.collectionView scrollToItemAtIndexPath:mid_index atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
-    
     self.scrollDate = date;
     self.originOffsetY = self.collectionView.contentOffset.y;
     
@@ -65,8 +64,7 @@ static NSString *identifier = @"calendarCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     calendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    cell.indexPath = indexPath;
-    [cell setDate];
+    [cell setDateWithIndex:indexPath];
     return cell;
 }
 
