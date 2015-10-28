@@ -46,7 +46,7 @@ static NSString *identifier = @"calendarCell";
     }
     
     NSIndexPath *mid_index = [NSIndexPath indexPathForItem:currentPage * 42 inSection:0];
-    [self.collectionView scrollToItemAtIndexPath:mid_index atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+    [self.collectionView scrollToItemAtIndexPath:mid_index atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     self.scrollDate = date;
     self.originOffsetY = self.collectionView.contentOffset.y;
     

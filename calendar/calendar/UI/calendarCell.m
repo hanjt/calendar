@@ -9,6 +9,7 @@
 #import "calendarCell.h"
 #import "NSString+Addtion.h"
 #import "NSDate+Addtion.h"
+#import "NSDate+convenience.h"
 
 #define kSecondOfDay  (24*60*60)
 
@@ -18,6 +19,7 @@
 @property (nonatomic, assign) NSInteger month;
 @property (nonatomic) NSInteger firstWeekDay;
 @property (nonatomic) NSInteger currentMonthDay;
+@property (weak, nonatomic) IBOutlet UILabel *nameOfDayLabel;
 
 @end
 
@@ -33,9 +35,9 @@
     self.year = offsetItem / 12 + 1901;
     self.month = offsetItem % 12 + 1;
     NSDate *date = [[NSString stringWithFormat:@"%ld-%ld-01",(long)self.year, (long)self.month] stringToDateWithDateFormat:@"yyyy-M-dd"];
-    
     day -= [date firstWeekOfMonth];
     (day >= 0)?[self haveContentInItem:day date:date]:[self notHaveContentInItem];
+    
 }
 
 -(void)haveContentInItem:(NSInteger)day date:(NSDate *)date{
@@ -44,6 +46,7 @@
     day += 1;
     self.currentMonthDay = day - [self dayInMonth:self.month year:self.year];
     (self.currentMonthDay <= 0)?[self thisMonth:day date:offsetDate]:[self nextMonth:offsetDate];
+    self.nameOfDayLabel.text = [[date offsetDay:day - 1] holidayName];
 }
 
 -(NSInteger)dayInMonth:(NSInteger)month year:(NSInteger)year{
@@ -74,19 +77,18 @@
             return 0;
             break;
     }
-    
 }
 
 
 -(void)thisMonth:(NSInteger)day date:(NSDate *)offsetDate{
     UIColor *color = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
     //判断是前一个月份则颜色淡些
-    if ([offsetDate compare:[NSDate date]] == NSOrderedAscending) {
+    if ([offsetDate compare:[NSDate dateStartOfDay:[NSDate date]]] == NSOrderedAscending) {
         color = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
     }
     self.numberLabel.textColor = color;
+    self.nameOfDayLabel.textColor = color;
     self.numberLabel.text = [NSString stringWithFormat:@"%ld",(long)day];
-
 }
 
 -(UIColor *)agoDayColor:(NSDate *)offsetDate{
@@ -98,10 +100,12 @@
     
     UIColor *color = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
     self.numberLabel.textColor = color;
+    self.nameOfDayLabel.textColor = color;
 }
 
 -(void)notHaveContentInItem{
     self.numberLabel.text = @"";
+    self.nameOfDayLabel.text = @"";
 }
 
 @end

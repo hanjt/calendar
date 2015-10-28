@@ -14,4 +14,7 @@
 
 -(NSString *)dateToStringWithFormat:(NSString *)format;
 
+//阳历节日
+- (NSString *)holidayName;
+
 @end
