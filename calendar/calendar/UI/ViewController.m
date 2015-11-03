@@ -39,13 +39,9 @@ static NSString *identifier = @"calendarCell";
     NSDate *date = [NSDate date];
     
     NSInteger currentPage = ([date year] - 1901) * 12 + [date month] - 1;
-    
-    NSInteger firstWeekDay = [date firstWeekDayInMonth];
-    if (firstWeekDay >= 7) {
-        firstWeekDay -= 7;
-    }
-    
-    NSIndexPath *mid_index = [NSIndexPath indexPathForItem:currentPage * 42 inSection:0];
+
+    //35是偏移量，是试出来的，如果有好的解决方法请告知，邮箱是multisim10@live.cn
+    NSIndexPath *mid_index = [NSIndexPath indexPathForItem: currentPage * 42 + 35 inSection:0];
     [self.collectionView scrollToItemAtIndexPath:mid_index atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     self.scrollDate = date;
     self.originOffsetY = self.collectionView.contentOffset.y;
@@ -59,7 +55,7 @@ static NSString *identifier = @"calendarCell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 42*12*150;
+    return 42 * 12 * 150;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
