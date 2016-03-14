@@ -31,6 +31,7 @@ static NSString *identifier = @"calendarCell";
 }
 
 - (void)initUI{
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.collectionView registerNib:[UINib nibWithNibName:identifier bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:identifier];
 }
 
@@ -38,16 +39,13 @@ static NSString *identifier = @"calendarCell";
     
     NSDate *date = [NSDate date];
     
-    NSInteger currentPage = ([date year] - 1901) * 12 + [date month] - 1;
-
-    //35是偏移量，是试出来的，如果有好的解决方法请告知，邮箱是multisim10@live.cn
-    NSIndexPath *mid_index = [NSIndexPath indexPathForItem: currentPage * 42 + 35 inSection:0];
-    [self.collectionView scrollToItemAtIndexPath:mid_index atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     self.scrollDate = date;
-    self.originOffsetY = self.collectionView.contentOffset.y;
     
     self.dataLabel.text = [date dateToStringWithFormat:@"yyyy年M月"];
+    NSInteger currentPage = ([date year] - 1901) * 12 + [date month] - 1;
     
+    NSIndexPath *mid_index = [NSIndexPath indexPathForItem: currentPage * 42 inSection:0];
+    [self.collectionView scrollToItemAtIndexPath:mid_index atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -84,11 +82,8 @@ static NSString *identifier = @"calendarCell";
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-    if (self.scrollDate != nil) {
-        int offset = (int)((scrollView.contentOffset.y - self.originOffsetY) / ((CGRectGetWidth([UIScreen mainScreen].bounds) - 12) / 7.f * 6));
-        self.scrollDate = [self.scrollDate offsetMonth:offset];
-        self.originOffsetY = scrollView.contentOffset.y;
-        self.dataLabel.text = [self.scrollDate dateToStringWithFormat:@"yyyy年M月"];
+    if (self.scrollDate) {
+        self.originOffsetY = self.collectionView.contentOffset.y;
     }
 }
 
