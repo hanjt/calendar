@@ -27,6 +27,7 @@ static NSString *identifier = @"calendarCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
+    [self.collectionView layoutIfNeeded];
     [self today];
 }
 
