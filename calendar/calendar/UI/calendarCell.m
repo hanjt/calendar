@@ -81,10 +81,10 @@
 
 
 -(void)thisMonth:(NSInteger)day date:(NSDate *)offsetDate{
-    UIColor *color = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+    UIColor *color = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     //判断是前一个月份则颜色淡些
     if ([offsetDate compare:[NSDate dateStartOfDay:[NSDate date]]] == NSOrderedAscending) {
-        color = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+        color = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
     }
     self.numberLabel.textColor = color;
     self.nameOfDayLabel.textColor = color;
@@ -98,7 +98,7 @@
 -(void)nextMonth:(NSDate *)offsetDate{
     self.numberLabel.text = [NSString stringWithFormat:@"%ld",(long)self.currentMonthDay];
     
-    UIColor *color = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
+    UIColor *color = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
     self.numberLabel.textColor = color;
     self.nameOfDayLabel.textColor = color;
 }

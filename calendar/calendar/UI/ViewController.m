@@ -64,7 +64,9 @@ static NSString *identifier = @"calendarCell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((CGRectGetWidth([UIScreen mainScreen].bounds) - 12) / 7.f, (CGRectGetWidth([UIScreen mainScreen].bounds) - 12) / 7.f);
+    CGFloat collectionViewWidth = self.collectionView.frame.size.width;
+    CGFloat collectionViewHeight = self.collectionView.frame.size.height;
+    return CGSizeMake(collectionViewWidth / 7.f, collectionViewHeight / 6.f);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
@@ -76,7 +78,7 @@ static NSString *identifier = @"calendarCell";
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    int offset = (int)((scrollView.contentOffset.y - self.originOffsetY) / ((CGRectGetWidth([UIScreen mainScreen].bounds) - 12) / 7.f * 6));
+    int offset = (int)((scrollView.contentOffset.y - self.originOffsetY) / self.collectionView.frame.size.height);
     self.scrollDate = [self.scrollDate offsetMonth:offset];
     self.originOffsetY = scrollView.contentOffset.y;
     self.dataLabel.text = [self.scrollDate dateToStringWithFormat:@"yyyy年M月"];
