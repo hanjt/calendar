@@ -7,18 +7,14 @@
 //
 
 #import "calendarCell.h"
-#import "NSString+Addtion.h"
 #import "NSDate+Addtion.h"
 #import "NSDate+convenience.h"
+#import "NSDate+Helper.h"
 
 #define kSecondOfDay  (24*60*60)
 
 @interface calendarCell ()
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
-@property (nonatomic, assign) NSInteger year;
-@property (nonatomic, assign) NSInteger month;
-@property (nonatomic) NSInteger firstWeekDay;
-@property (nonatomic) NSInteger currentMonthDay;
 @property (weak, nonatomic) IBOutlet UILabel *nameOfDayLabel;
 
 @end
@@ -26,86 +22,57 @@
 @implementation calendarCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 }
 
--(void)setDateWithIndex:(NSIndexPath *)indexPath{
-    NSInteger offsetItem = indexPath.item / 42;
-    NSInteger day = indexPath.item % 42;
-    self.year = offsetItem / 12 + 1901;
-    self.month = offsetItem % 12 + 1;
-    NSDate *date = [[NSString stringWithFormat:@"%ld-%ld-01",(long)self.year, (long)self.month] stringToDateWithDateFormat:@"yyyy-M-dd"];
-    day -= [date firstWeekOfMonth];
-    (day >= 0)?[self haveContentInItem:day date:date]:[self notHaveContentInItem];
-    
+- (void)setIndexPath:(NSIndexPath *)indexPath {
+    if ([indexPath isKindOfClass:[NSIndexPath class]] && _indexPath != indexPath) {
+        _indexPath = indexPath;
+    }
+    [self updateUI];
 }
 
--(void)haveContentInItem:(NSInteger)day date:(NSDate *)date{
+- (void)updateUI {
+    //计算该cell的年月
+    NSInteger year = (self.indexPath.section) / 12 + 1901 + 1;
+    NSInteger month = self.indexPath.section % 12 + 1;
     
-    NSDate *offsetDate = [NSDate dateWithTimeInterval:day*kSecondOfDay sinceDate:date];
-    day += 1;
-    self.currentMonthDay = day - [self dayInMonth:self.month year:self.year];
-    (self.currentMonthDay <= 0)?[self thisMonth:day date:offsetDate]:[self nextMonth:offsetDate];
-    self.nameOfDayLabel.text = [[date offsetDay:day - 1] holidayName];
+    NSString *dataString = [NSString stringWithFormat:@"%ld-%ld", year, month];
+    NSDate *date = [NSDate dateFromString:dataString withFormat:@"yyyy-MM"];
+    
+    NSInteger firstWeekDayInMonth = [date firstWeekOfMonth];
+    NSInteger numDaysInMonth = [date numDaysInMonth];
+    
+    //计算该cell的日期
+    //默认日期从1号开始，根据偏移量计算真正的日期
+    NSInteger day = 1;
+    day += (self.indexPath.row - firstWeekDayInMonth);
+    self.numberLabel.hidden = (day <= 0);
+    self.nameOfDayLabel.hidden = (day <= 0);
+    if (day > numDaysInMonth) {
+        day -= numDaysInMonth;
+        month += 1;
+    }
+    //当前cell的日期
+
+    NSDate *currentDate = [NSDate dateFromString:[NSString stringWithFormat:@"%ld-%ld-%ld",year, month, day] withFormat:@"yyyy-MM-dd"];
+    self.numberLabel.text = @(day).stringValue;
+    self.nameOfDayLabel.text = [currentDate holidayName];
+    [self changeLabelColorWithDate:currentDate];
 }
 
--(NSInteger)dayInMonth:(NSInteger)month year:(NSInteger)year{
-    switch (month) {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-            return 31;
-            break;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            return 30;
-            break;
-        case 2:
-            if (((year%4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
-                return 29;
-            }
-            else
-                return 28;
-            break;
-        default:
-            return 0;
-            break;
+
+- (void)changeLabelColorWithDate:(NSDate *)date {
+    if (!date) {
+        return;
+    }
+    if ([date compare:[NSDate date]] == NSOrderedAscending) {
+        self.numberLabel.textColor = [UIColor purpleColor];
+        self.nameOfDayLabel.textColor = [UIColor purpleColor];
+    } else {
+        self.numberLabel.textColor = [UIColor darkTextColor];
+        self.nameOfDayLabel.textColor = [UIColor darkTextColor];
     }
 }
-
-
--(void)thisMonth:(NSInteger)day date:(NSDate *)offsetDate{
-    UIColor *color = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
-    //判断是前一个月份则颜色淡些
-    if ([offsetDate compare:[NSDate dateStartOfDay:[NSDate date]]] == NSOrderedAscending) {
-        color = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-    }
-    self.numberLabel.textColor = color;
-    self.nameOfDayLabel.textColor = color;
-    self.numberLabel.text = [NSString stringWithFormat:@"%ld",(long)day];
-}
-
--(UIColor *)agoDayColor:(NSDate *)offsetDate{
-    return [UIColor colorWithRed:1 green:1 blue:1 alpha:((int)([offsetDate timeIntervalSinceDate:[NSDate date]]/kSecondOfDay) >= 0)?1.0:0.4];
-}
-
--(void)nextMonth:(NSDate *)offsetDate{
-    self.numberLabel.text = [NSString stringWithFormat:@"%ld",(long)self.currentMonthDay];
-    
-    UIColor *color = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-    self.numberLabel.textColor = color;
-    self.nameOfDayLabel.textColor = color;
-}
-
--(void)notHaveContentInItem{
-    self.numberLabel.text = @"";
-    self.nameOfDayLabel.text = @"";
-}
-
 @end

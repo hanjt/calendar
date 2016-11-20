@@ -17,8 +17,9 @@
 		4EF838531BC7ED4E00012592 /* calendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF838511BC7ED4E00012592 /* calendarCell.m */; };
 		4EF838541BC7ED4E00012592 /* calendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF838521BC7ED4E00012592 /* calendarCell.xib */; };
 		4EF838581BC7F73D00012592 /* NSDate+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF838571BC7F73D00012592 /* NSDate+Addtion.m */; };
-		4EF8385B1BC7F75200012592 /* NSString+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8385A1BC7F75200012592 /* NSString+Addtion.m */; };
 		4EF8385E1BC7FC4F00012592 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8385D1BC7FC4F00012592 /* NSDate+convenience.m */; };
+		63BE8F121DE1E4500053D396 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BE8F101DE1E4500053D396 /* NSDate+Helper.m */; };
+		63BE8F131DE1E4500053D396 /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = 63BE8F111DE1E4500053D396 /* README.textile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,10 +51,11 @@
 		4EF838521BC7ED4E00012592 /* calendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = calendarCell.xib; sourceTree = "<group>"; };
 		4EF838561BC7F73D00012592 /* NSDate+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Addtion.h"; sourceTree = "<group>"; };
 		4EF838571BC7F73D00012592 /* NSDate+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Addtion.m"; sourceTree = "<group>"; };
-		4EF838591BC7F75200012592 /* NSString+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addtion.h"; sourceTree = "<group>"; };
-		4EF8385A1BC7F75200012592 /* NSString+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addtion.m"; sourceTree = "<group>"; };
 		4EF8385C1BC7FC4F00012592 /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
 		4EF8385D1BC7FC4F00012592 /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
+		63BE8F0F1DE1E4500053D396 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		63BE8F101DE1E4500053D396 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		63BE8F111DE1E4500053D396 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.textile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,12 +152,21 @@
 			children = (
 				4EF838561BC7F73D00012592 /* NSDate+Addtion.h */,
 				4EF838571BC7F73D00012592 /* NSDate+Addtion.m */,
-				4EF838591BC7F75200012592 /* NSString+Addtion.h */,
-				4EF8385A1BC7F75200012592 /* NSString+Addtion.m */,
 				4EF8385C1BC7FC4F00012592 /* NSDate+convenience.h */,
 				4EF8385D1BC7FC4F00012592 /* NSDate+convenience.m */,
+				63BE8F0E1DE1E4500053D396 /* nsdate-helper-master */,
 			);
 			path = category;
+			sourceTree = "<group>";
+		};
+		63BE8F0E1DE1E4500053D396 /* nsdate-helper-master */ = {
+			isa = PBXGroup;
+			children = (
+				63BE8F0F1DE1E4500053D396 /* NSDate+Helper.h */,
+				63BE8F101DE1E4500053D396 /* NSDate+Helper.m */,
+				63BE8F111DE1E4500053D396 /* README.textile */,
+			);
+			path = "nsdate-helper-master";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +213,7 @@
 		4EF837F21BC6E3CF00012592 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = HanJiatong;
 				TargetAttributes = {
 					4EF837F91BC6E3CF00012592 = {
@@ -240,6 +251,7 @@
 			files = (
 				4EF838091BC6E3CF00012592 /* Main.storyboard in Resources */,
 				4EF8380E1BC6E3CF00012592 /* LaunchScreen.xib in Resources */,
+				63BE8F131DE1E4500053D396 /* README.textile in Resources */,
 				4EF8380B1BC6E3CF00012592 /* Images.xcassets in Resources */,
 				4EF838541BC7ED4E00012592 /* calendarCell.xib in Resources */,
 			);
@@ -263,9 +275,9 @@
 				4EF838031BC6E3CF00012592 /* AppDelegate.m in Sources */,
 				4EF8384F1BC7ED1200012592 /* ViewController.m in Sources */,
 				4EF838001BC6E3CF00012592 /* main.m in Sources */,
+				63BE8F121DE1E4500053D396 /* NSDate+Helper.m in Sources */,
 				4EF838581BC7F73D00012592 /* NSDate+Addtion.m in Sources */,
 				4EF838531BC7ED4E00012592 /* calendarCell.m in Sources */,
-				4EF8385B1BC7F75200012592 /* NSString+Addtion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,8 +332,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -364,8 +378,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -394,7 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = calendar/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.exmart.HomeLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -407,7 +423,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = calendar/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.exmart.HomeLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";

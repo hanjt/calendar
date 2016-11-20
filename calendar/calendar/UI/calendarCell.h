@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface calendarCell : UICollectionViewCell
--(void)setDateWithIndex:(NSIndexPath *)indexPath;
+
+/** cell所在的indexPath，由此算出当前日期*/
+@property (nonatomic, strong) NSIndexPath *indexPath;
+
 @end
