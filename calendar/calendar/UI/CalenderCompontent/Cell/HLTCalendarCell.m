@@ -1,25 +1,25 @@
 //
-//  calendarCell.m
+//  HLTCalendarCell.m
 //  calendar
 //
 //  Created by HanJiatong on 15/10/9.
 //  Copyright (c) 2015年 HanJiatong. All rights reserved.
 //
 
-#import "calendarCell.h"
+#import "HLTCalendarCell.h"
 #import "NSDate+Addtion.h"
 #import "NSDate+convenience.h"
 #import "NSDate+Helper.h"
 
-#define kSecondOfDay  (24*60*60)
+@interface HLTCalendarCell ()
 
-@interface calendarCell ()
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameOfDayLabel;
+//@property (nonatomic, strong) NSDate *currentDate;
 
 @end
 
-@implementation calendarCell
+@implementation HLTCalendarCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -50,18 +50,18 @@
     day += (self.indexPath.row - firstWeekDayInMonth);
     self.numberLabel.hidden = (day <= 0);
     self.nameOfDayLabel.hidden = (day <= 0);
+    //如果日期大于这个月的最大日期，则月份加1
     if (day > numDaysInMonth) {
         day -= numDaysInMonth;
         month += 1;
     }
     //当前cell的日期
 
-    NSDate *currentDate = [NSDate dateFromString:[NSString stringWithFormat:@"%ld-%ld-%ld",year, month, day] withFormat:@"yyyy-MM-dd"];
+    _currentDate = [NSDate dateFromString:[NSString stringWithFormat:@"%ld-%ld-%ld",year, month, day] withFormat:@"yyyy-MM-dd"];
     self.numberLabel.text = @(day).stringValue;
-    self.nameOfDayLabel.text = [currentDate holidayName];
-    [self changeLabelColorWithDate:currentDate];
+    self.nameOfDayLabel.text = [_currentDate holidayName];
+    [self changeLabelColorWithDate:_currentDate];
 }
-
 
 - (void)changeLabelColorWithDate:(NSDate *)date {
     if (!date) {
@@ -75,4 +75,9 @@
         self.nameOfDayLabel.textColor = [UIColor darkTextColor];
     }
 }
+
+//- (void)setSelected:(BOOL)selected {
+//    self.backgroundColor = selected ? [UIColor redColor] : [UIColor clearColor];
+//}
+
 @end
