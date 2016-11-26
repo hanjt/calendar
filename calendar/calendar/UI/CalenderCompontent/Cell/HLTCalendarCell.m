@@ -9,7 +9,7 @@
 #import "HLTCalendarCell.h"
 #import "NSDate+Addtion.h"
 #import "NSDate+convenience.h"
-#import "NSDate+Helper.h"
+#import "CalculateModel.h"
 
 @interface HLTCalendarCell ()
 
@@ -33,34 +33,20 @@
     [self updateUI];
 }
 
+- (void)cellForIndexPath:(NSIndexPath *)indexPath date:(NSDate *)date {
+    
+}
+
 - (void)updateUI {
-    //计算该cell的年月
-    NSInteger year = (self.indexPath.section) / 12 + 1901 + 1;
-    NSInteger month = self.indexPath.section % 12 + 1;
-    
-    NSString *dataString = [NSString stringWithFormat:@"%ld-%ld", year, month];
-    NSDate *date = [NSDate dateFromString:dataString withFormat:@"yyyy-MM"];
-    
-    NSInteger firstWeekDayInMonth = [date firstWeekOfMonth];
-    NSInteger numDaysInMonth = [date numDaysInMonth];
-    
-    //计算该cell的日期
-    //默认日期从1号开始，根据偏移量计算真正的日期
-    NSInteger day = 1;
-    day += (self.indexPath.row - firstWeekDayInMonth);
+    _selectDate = [CalculateModel convertIndexPathToDate:self.indexPath];
+    NSInteger day = [_selectDate day];
     self.numberLabel.hidden = (day <= 0);
     self.nameOfDayLabel.hidden = (day <= 0);
-    //如果日期大于这个月的最大日期，则月份加1
-    if (day > numDaysInMonth) {
-        day -= numDaysInMonth;
-        month += 1;
-    }
+    
     //当前cell的日期
-
-    _currentDate = [NSDate dateFromString:[NSString stringWithFormat:@"%ld-%ld-%ld",year, month, day] withFormat:@"yyyy-MM-dd"];
     self.numberLabel.text = @(day).stringValue;
-    self.nameOfDayLabel.text = [_currentDate holidayName];
-    [self changeLabelColorWithDate:_currentDate];
+    self.nameOfDayLabel.text = [_selectDate holidayName];
+    [self changeLabelColorWithDate:_selectDate];
 }
 
 - (void)changeLabelColorWithDate:(NSDate *)date {
@@ -76,8 +62,8 @@
     }
 }
 
-//- (void)setSelected:(BOOL)selected {
-//    self.backgroundColor = selected ? [UIColor redColor] : [UIColor clearColor];
-//}
+- (void)setSelected:(BOOL)selected {
+    self.backgroundColor = (!self.numberLabel.hidden && selected) ? [UIColor redColor] : [UIColor clearColor];
+}
 
 @end

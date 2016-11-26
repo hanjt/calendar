@@ -10,19 +10,6 @@
 
 @implementation NSDate (Addtion)
 
--(NSInteger)firstWeekOfMonth{
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
-    NSDateComponents *weekdayComponents = [gregorian components:NSCalendarUnitWeekday fromDate:self];
-    return [weekdayComponents weekday]-1;
-}
-
--(NSString *)dateToStringWithFormat:(NSString *)format{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = format;
-    return  [dateFormatter stringFromDate:self];
-}
-
 -(NSString *)nameOfDay{
     NSArray *array = [[NSArray alloc] initWithObjects:@"初一", @"初二",@"初三",@"初四",@"初五",@"初六",@"初七",@"初八",@"初九",@"初十",@"十一",@"十二",@"十三",@"十四",@"十五",@"十六",@"十七",@"十八",@"十九",@"二十",@"廿一",@"廿二",@"廿三",@"廿四",@"廿五",@"廿六",@"廿七",@"廿八",@"廿九",@"三十",nil];
     NSInteger day = [self calendarFromDate];
@@ -32,7 +19,7 @@
 -(NSInteger)calendarFromDate{
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
     
-    NSDateComponents *weekdayComponents = [gregorian components:NSDayCalendarUnit fromDate:self];
+    NSDateComponents *weekdayComponents = [gregorian components:NSCalendarUnitDay fromDate:self];
     return [weekdayComponents day];
 }
 
@@ -47,29 +34,31 @@
 -(NSInteger)monthOfLunar{
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
     
-    NSDateComponents *weekdayComponents = [gregorian components:NSMonthCalendarUnit fromDate:self];
+    NSDateComponents *weekdayComponents = [gregorian components:NSCalendarUnitMonth fromDate:self];
     return [weekdayComponents month];
 }
 
 -(BOOL)isLeapMonth{
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
     
-    NSDateComponents *nowComponents = [gregorian components:NSMonthCalendarUnit fromDate:self];
+    NSDateComponents *nowComponents = [gregorian components:NSCalendarUnitMonth fromDate:self];
     
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     [offsetComponents setMonth:-1];
     NSDate *monthAgo = [gregorian dateByAddingComponents:offsetComponents
                                                   toDate:self options:0];
     
-    NSDateComponents *monthAgoComponents = [gregorian components:NSMonthCalendarUnit fromDate:monthAgo];
+    NSDateComponents *monthAgoComponents = [gregorian components:NSCalendarUnitMonth fromDate:monthAgo];
     return ([nowComponents month] == [monthAgoComponents month]) ?YES:NO;
 }
 
 //阳历节日
 - (NSString *)holidayName{
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    /** 
+     不显示阳历日期
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
-    NSDateComponents *weekdayComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSWeekOfMonthCalendarUnit | NSWeekdayOrdinalCalendarUnit) fromDate:self];
+    NSDateComponents *weekdayComponents = [gregorian components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitWeekOfMonth | NSCalendarUnitWeekdayOrdinal) fromDate:self];
     NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"元旦",@"1-1",@"湿地日",@"2-2",@"情人节",@"2-14",@"爱耳日",@"3-3",@"青服日",@"3-5",
                                 
                                 @"妇女节",@"3-8",@"护河日",@"3-9",@"植树节",@"3-12",
@@ -190,6 +179,7 @@
             return holidayName;
             break;
     }
+     */
     return [self nameOfDay];
 }
 

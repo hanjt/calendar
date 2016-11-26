@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "HLTCalendarView.h"
 
-@interface ViewController () //<HLTCalendarViewDelegate>
+@interface ViewController () <HLTCalendarViewDelegate>
 
 @property (nonatomic, strong) HLTCalendarView *calendar;
 
@@ -24,7 +24,7 @@
 
 - (void)initUI {
     self.calendar = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([HLTCalendarView class]) owner:self options:nil].lastObject;
-//    self.calendar.delegate = self;
+    self.calendar.delegate = self;
     [self.calendar showInView:self.view];
 }
 

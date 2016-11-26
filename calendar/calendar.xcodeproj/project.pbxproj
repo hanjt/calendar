@@ -20,6 +20,7 @@
 		636BA2DF1DE9664A0004C1B3 /* HLTCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636BA2DE1DE9664A0004C1B3 /* HLTCalendarView.xib */; };
 		636BA2E41DE97E470004C1B3 /* HLTCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636BA2E21DE97E470004C1B3 /* HLTCalendarCell.m */; };
 		636BA2E51DE97E470004C1B3 /* HLTCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636BA2E31DE97E470004C1B3 /* HLTCalendarCell.xib */; };
+		636BA2EC1DE9ABFA0004C1B3 /* CalculateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 636BA2EB1DE9ABFA0004C1B3 /* CalculateModel.m */; };
 		63BE8F121DE1E4500053D396 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BE8F101DE1E4500053D396 /* NSDate+Helper.m */; };
 		63BE8F131DE1E4500053D396 /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = 63BE8F111DE1E4500053D396 /* README.textile */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,8 @@
 		636BA2E11DE97E470004C1B3 /* HLTCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLTCalendarCell.h; sourceTree = "<group>"; };
 		636BA2E21DE97E470004C1B3 /* HLTCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLTCalendarCell.m; sourceTree = "<group>"; };
 		636BA2E31DE97E470004C1B3 /* HLTCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HLTCalendarCell.xib; sourceTree = "<group>"; };
+		636BA2EA1DE9ABFA0004C1B3 /* CalculateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateModel.h; sourceTree = "<group>"; };
+		636BA2EB1DE9ABFA0004C1B3 /* CalculateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateModel.m; sourceTree = "<group>"; };
 		63BE8F0F1DE1E4500053D396 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
 		63BE8F101DE1E4500053D396 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		63BE8F111DE1E4500053D396 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.textile; sourceTree = "<group>"; };
@@ -165,6 +168,7 @@
 		636BA2DA1DE9663B0004C1B3 /* CalenderCompontent */ = {
 			isa = PBXGroup;
 			children = (
+				636BA2E91DE9ABFA0004C1B3 /* Model */,
 				636BA2E01DE97E470004C1B3 /* Cell */,
 				636BA2DB1DE9663B0004C1B3 /* HLTCalendarView.h */,
 				636BA2DC1DE9663B0004C1B3 /* HLTCalendarView.m */,
@@ -181,6 +185,15 @@
 				636BA2E31DE97E470004C1B3 /* HLTCalendarCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		636BA2E91DE9ABFA0004C1B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				636BA2EA1DE9ABFA0004C1B3 /* CalculateModel.h */,
+				636BA2EB1DE9ABFA0004C1B3 /* CalculateModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		63BE8F0E1DE1E4500053D396 /* nsdate-helper-master */ = {
@@ -296,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				636BA2EC1DE9ABFA0004C1B3 /* CalculateModel.m in Sources */,
 				4EF8385E1BC7FC4F00012592 /* NSDate+convenience.m in Sources */,
 				4EF838031BC6E3CF00012592 /* AppDelegate.m in Sources */,
 				4EF8384F1BC7ED1200012592 /* ViewController.m in Sources */,

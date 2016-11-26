@@ -12,6 +12,11 @@
 
 /** cell所在的indexPath，由此算出当前日期*/
 @property (nonatomic, strong) NSIndexPath *indexPath;
-@property (nonatomic, strong, readonly) NSDate *currentDate;
+
+- (void)cellForIndexPath:(NSIndexPath *)indexPath date:(NSDate *)date;
+/** 返回当前选中的时间*/
+@property (nonatomic, strong, readonly) NSDate *selectDate;
+/** 是否显示下个月*/
+@property (nonatomic, assign, readonly) BOOL willShowNextMonth;
 
 @end

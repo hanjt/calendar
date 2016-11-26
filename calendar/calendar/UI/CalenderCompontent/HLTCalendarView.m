@@ -10,8 +10,9 @@
 
 #import "HLTCalendarView.h"
 #import "HLTCalendarCell.h"
+#import "CalculateModel.h"
+#import "NSDate+Helper.h"
 #import "NSDate+convenience.h"
-#import "NSDate+Addtion.h"
 
 @interface HLTCalendarView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -19,7 +20,7 @@
 @property (nonatomic, retain) NSDate *scrollDate;
 @property (nonatomic) CGFloat originOffsetY;        //collectionView起始位置
 @property (weak, nonatomic) IBOutlet UILabel *dataLabel;
-//@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
 @end
 
@@ -40,24 +41,22 @@
 
 -(void)today{
     
-    NSDate *date = [NSDate date];
+    self.scrollDate = [NSDate date];
     
-    self.scrollDate = date;
+    self.dataLabel.text = [self currentDateString:self.scrollDate];
     
-    self.dataLabel.text = [date dateToStringWithFormat:@"yyyy年M月"];
-    
-    NSInteger currentMonth = [date month];
-    NSInteger currentYear = [date year] - 1901;
-//    NSIndexPath *currentIndex = [NSIndexPath indexPathForRow:0 inSection:(currentYear - 1) * 12 + currentMonth - 1];
-    NSIndexPath *currentIndex = [NSIndexPath indexPathForRow:0 inSection:0];
-
-    [self.collectionView scrollToItemAtIndexPath:currentIndex atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    self.selectedIndexPath = [CalculateModel scrollToFirstRowByDate:self.scrollDate];
+    [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
 - (void)showInView:(UIView *)view {
     CGFloat height = (CGRectGetWidth(view.bounds) - CGRectGetMinX(self.collectionView.bounds) * 2) * 6 / 7 + self.collectionView.frame.origin.y;
     self.frame = CGRectMake(0, 20, CGRectGetWidth(view.bounds), height);
     [view addSubview:self];
+}
+
+- (NSString *)currentDateString:(NSDate *)date {
+    return [NSDate stringFromDate:date withFormat:@"yyyy年M月"];
 }
 
 #pragma mark UICollectionView DataSource & Delegate
@@ -75,7 +74,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HLTCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HLTCalendarCell class]) forIndexPath:indexPath];
     cell.indexPath = indexPath;
-//    cell.selected = (self.selectedIndexPath == indexPath);
+    cell.selected = self.selectedIndexPath == indexPath;
     return cell;
 }
 
@@ -89,15 +88,27 @@
     return 0;
 }
 
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    self.selectedIndexPath = indexPath;
-//    [collectionView reloadData];
-//    UICollectionViewCell *cell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
-//    if ([cell isKindOfClass:[HLTCalendarCell class]]) {
-//        if ([self.delegate respondsToSelector:@selector(calendarView:didSelectDate:)]) {
-//            [self.delegate calendarView:self didSelectDate:((HLTCalendarCell *)cell).currentDate];
-//        }
-//    }
+    UICollectionViewCell *cell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[HLTCalendarCell class]]) {
+        HLTCalendarCell *calendarCell = (HLTCalendarCell *)cell;
+        self.scrollDate = calendarCell.selectDate;
+        if (calendarCell.willShowNextMonth) {
+            [self.collectionView scrollToItemAtIndexPath:[CalculateModel scrollToFirstRowByDate: self.scrollDate] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+            self.dataLabel.text = [self currentDateString:self.scrollDate];
+        }
+        self.selectedIndexPath = [CalculateModel convertDateToIndexPath:self.scrollDate];
+
+        if ([self.delegate respondsToSelector:@selector(calendarView:didSelectDate:)]) {
+            [self.delegate calendarView:self didSelectDate:calendarCell.selectDate];
+        }
+        [collectionView reloadData];
+    }
 }
 
 #pragma mark ScrollView Delegate
@@ -105,13 +116,11 @@
     int offset = (int)((scrollView.contentOffset.y - self.originOffsetY) / self.collectionView.frame.size.height);
     self.scrollDate = [self.scrollDate offsetMonth:offset];
     self.originOffsetY = scrollView.contentOffset.y;
-    self.dataLabel.text = [self.scrollDate dateToStringWithFormat:@"yyyy年M月"];
+    self.dataLabel.text = [self currentDateString:self.scrollDate];
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-    if (self.scrollDate) {
-        self.originOffsetY = self.collectionView.contentOffset.y;
-    }
+    self.originOffsetY = self.collectionView.contentOffset.y;
 }
 
 -(BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView{
