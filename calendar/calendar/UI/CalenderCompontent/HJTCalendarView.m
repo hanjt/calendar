@@ -1,5 +1,5 @@
 //
-//  HLTCalendarView.m
+//  HJTCalendarView.m
 //  calendar
 //
 //  Created by Jiatong Han on 16/11/26.
@@ -8,13 +8,13 @@
 
 //每一个月是一个section，根据indexPath计算每个cell的实际日期
 
-#import "HLTCalendarView.h"
-#import "HLTCalendarCell.h"
+#import "HJTCalendarView.h"
+#import "HJTCalendarCell.h"
 #import "CalculateModel.h"
 #import "NSDate+Helper.h"
 #import "NSDate+convenience.h"
 
-@interface HLTCalendarView () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HJTCalendarView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, retain) NSDate *scrollDate;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation HLTCalendarView
+@implementation HJTCalendarView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -36,7 +36,7 @@
 - (void)initUI{
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([HLTCalendarCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([HLTCalendarCell class])];
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([HJTCalendarCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([HJTCalendarCell class])];
 }
 
 -(void)today{
@@ -72,7 +72,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    HLTCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HLTCalendarCell class]) forIndexPath:indexPath];
+    HJTCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HJTCalendarCell class]) forIndexPath:indexPath];
     cell.indexPath = indexPath;
     cell.selected = self.selectedIndexPath == indexPath;
     return cell;
@@ -95,8 +95,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [self collectionView:collectionView cellForItemAtIndexPath:indexPath];
-    if ([cell isKindOfClass:[HLTCalendarCell class]]) {
-        HLTCalendarCell *calendarCell = (HLTCalendarCell *)cell;
+    if ([cell isKindOfClass:[HJTCalendarCell class]]) {
+        HJTCalendarCell *calendarCell = (HJTCalendarCell *)cell;
         self.scrollDate = calendarCell.selectDate;
         if (calendarCell.willShowNextMonth) {
             [self.collectionView scrollToItemAtIndexPath:[CalculateModel scrollToFirstRowByDate: self.scrollDate] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];

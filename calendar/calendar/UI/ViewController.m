@@ -7,11 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "HLTCalendarView.h"
+#import "HJTCalendarView.h"
 
-@interface ViewController () <HLTCalendarViewDelegate>
+@interface ViewController () <HJTCalendarViewDelegate>
 
-@property (nonatomic, strong) HLTCalendarView *calendar;
+@property (nonatomic, strong) HJTCalendarView *calendar;
 
 @end
 
@@ -23,12 +23,12 @@
 }
 
 - (void)initUI {
-    self.calendar = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([HLTCalendarView class]) owner:self options:nil].lastObject;
+    self.calendar = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([HJTCalendarView class]) owner:self options:nil].lastObject;
     self.calendar.delegate = self;
     [self.calendar showInView:self.view];
 }
 
-- (void)calendarView:(HLTCalendarView *)calendarView didSelectDate:(NSDate *)date {
+- (void)calendarView:(HJTCalendarView *)calendarView didSelectDate:(NSDate *)date {
     
 }
 

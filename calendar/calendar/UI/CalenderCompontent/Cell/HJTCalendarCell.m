@@ -1,17 +1,17 @@
 //
-//  HLTCalendarCell.m
+//  HJTCalendarCell.m
 //  calendar
 //
 //  Created by HanJiatong on 15/10/9.
 //  Copyright (c) 2015年 HanJiatong. All rights reserved.
 //
 
-#import "HLTCalendarCell.h"
+#import "HJTCalendarCell.h"
 #import "NSDate+Addtion.h"
 #import "NSDate+convenience.h"
 #import "CalculateModel.h"
 
-@interface HLTCalendarCell ()
+@interface HJTCalendarCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameOfDayLabel;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation HLTCalendarCell
+@implementation HJTCalendarCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

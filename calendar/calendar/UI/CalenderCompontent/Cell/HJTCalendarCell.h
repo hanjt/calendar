@@ -1,5 +1,5 @@
 //
-//  HLTCalendarCell.h
+//  HJTCalendarCell.h
 //  calendar
 //
 //  Created by HanJiatong on 15/10/9.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HLTCalendarCell : UICollectionViewCell
+@interface HJTCalendarCell : UICollectionViewCell
 
 /** cell所在的indexPath，由此算出当前日期*/
 @property (nonatomic, strong) NSIndexPath *indexPath;
