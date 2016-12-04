@@ -21,9 +21,16 @@
 @interface HJTCalendarView : UIView
 
 @property (nonatomic, weak) id <HJTCalendarViewDelegate> delegate;
-/** 水平方向的内间距*/
-@property (nonatomic, assign) CGFloat horizontalInsert;
-/** 日历控件的高度*/
+
+/** 
+    控件的内间距
+    日历控件的比例是7:6，所以bottom不起作用，默认固底显示
+ */
+@property (nonatomic, assign) UIEdgeInsets contentInsert;
+
+/** 
+    日历控件的高度
+ */
 @property (nonatomic, assign, readonly) CGRect calendarFrame;
 - (void)showInView:(UIView *)view;
 

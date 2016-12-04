@@ -31,6 +31,7 @@
     [self initUI];
     [self.collectionView layoutIfNeeded];
     [self today];
+    self.backgroundColor = [UIColor redColor];
 }
 
 - (void)initUI{
@@ -63,13 +64,13 @@
         superViewWidth = [UIScreen mainScreen].bounds.size.width;
     }
     //宽度应该为7的倍数
-    int width = superViewWidth - (superViewWidth % 7) - _horizontalInsert * 2;
+    int width = superViewWidth - (superViewWidth % 7) - (self.contentInsert.left + self.contentInsert.right);
     int height = width / 7 * 6 + self.collectionView.frame.origin.y;
-    return CGRectMake((superViewWidth - width) / 2, 0, width, height);
+    return CGRectMake((superViewWidth - width) / 2, self.contentInsert.top, width, height);
 }
 
-- (void)setHorizontalInsert:(CGFloat)horizontalInsert {
-    _horizontalInsert = horizontalInsert;
+- (void)setContentInsert:(UIEdgeInsets)contentInsert {
+    _contentInsert = contentInsert;
     self.frame = self.calendarFrame;
     [self layoutIfNeeded];
 }
@@ -77,7 +78,9 @@
 - (void)layoutIfNeeded {
     [super layoutIfNeeded];
     [self.collectionView reloadData];
+    self.dataLabel.text = [self currentDateString:self.scrollDate];
     [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+    self.originOffsetY = self.collectionView.contentOffset.y;
 }
 
 - (NSString *)currentDateString:(NSDate *)date {
@@ -138,10 +141,10 @@
 
 #pragma mark ScrollView Delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    int offset = (int)((scrollView.contentOffset.y - self.originOffsetY) / self.collectionView.frame.size.height);
+    int offset = (int)((scrollView.contentOffset.y - self.originOffsetY) / CGRectGetHeight(scrollView.frame));
     self.scrollDate = [self.scrollDate offsetMonth:offset];
-    self.originOffsetY = scrollView.contentOffset.y;
     self.dataLabel.text = [self currentDateString:self.scrollDate];
+    self.originOffsetY = scrollView.contentOffset.y;
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
