@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "calendar"
-  s.version      = "0.2"
+  s.version      = "0.3"
   s.summary      = "A short description of calendar."
 
   # This description is used to generate tags and improve search results.
@@ -38,8 +38,8 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "LICENSE"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  #s.license      = "LICENSE"
+   s.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,8 +90,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "CalenderCompontent/*"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "classes/**/*.{h,m}"
+  #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
 
