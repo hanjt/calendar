@@ -26,6 +26,7 @@
     self.calendar = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([HJTCalendarView class]) owner:self options:nil].lastObject;
     self.calendar.delegate = self;
     [self.calendar showInView:self.view];
+    self.calendar.horizontalInsert = 10;
 }
 
 - (void)calendarView:(HJTCalendarView *)calendarView didSelectDate:(NSDate *)date {

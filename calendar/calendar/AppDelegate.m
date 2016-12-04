@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 
+#if DEBUG
+#import "FLEXManager.h"
+#endif
+
 @interface AppDelegate ()
 
 @end
@@ -16,7 +20,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    #if DEBUG
+        [[FLEXManager sharedManager] hideExplorer];
+    #endif
     return YES;
 }
 
