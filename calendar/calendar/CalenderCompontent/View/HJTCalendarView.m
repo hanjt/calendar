@@ -31,7 +31,6 @@
     [self initUI];
     [self.collectionView layoutIfNeeded];
     [self today];
-    self.backgroundColor = [UIColor redColor];
 }
 
 - (void)initUI{
