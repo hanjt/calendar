@@ -52,8 +52,11 @@
 
 - (void)showInView:(UIView *)view {
     [view addSubview:self];
-    self.frame = self.calendarFrame;
     [self layoutIfNeeded];
+}
+
+- (CGRect)frame {
+    return CGRectMake(0, 0, self.calendarFrame.size.width, self.calendarFrame.size.height);
 }
 
 - (CGRect)calendarFrame {
@@ -71,12 +74,7 @@
 
 - (void)setContentInsert:(UIEdgeInsets)contentInsert {
     _contentInsert = contentInsert;
-    self.frame = self.calendarFrame;
     [self layoutIfNeeded];
-}
-
-- (CGRect)frame {
-    return self.calendarFrame;
 }
 
 - (void)layoutIfNeeded {
@@ -135,7 +133,7 @@
             self.dataLabel.text = [self currentDateString:self.scrollDate];
         }
         self.selectedIndexPath = [CalculateModel convertDateToIndexPath:self.scrollDate];
-        
+
         if ([self.delegate respondsToSelector:@selector(calendarView:didSelectDate:)]) {
             [self.delegate calendarView:self didSelectDate:calendarCell.selectDate];
         }
