@@ -28,6 +28,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.contentInsert = UIEdgeInsetsMake(0, 0, 0, 0);
     [self initUI];
     [self.collectionView layoutIfNeeded];
     [self today];
@@ -72,6 +73,10 @@
     _contentInsert = contentInsert;
     self.frame = self.calendarFrame;
     [self layoutIfNeeded];
+}
+
+- (CGRect)frame {
+    return self.calendarFrame;
 }
 
 - (void)layoutIfNeeded {
@@ -130,7 +135,7 @@
             self.dataLabel.text = [self currentDateString:self.scrollDate];
         }
         self.selectedIndexPath = [CalculateModel convertDateToIndexPath:self.scrollDate];
-
+        
         if ([self.delegate respondsToSelector:@selector(calendarView:didSelectDate:)]) {
             [self.delegate calendarView:self didSelectDate:calendarCell.selectDate];
         }
