@@ -46,7 +46,7 @@
     
     self.dataLabel.text = [self currentDateString:self.scrollDate];
     
-    self.selectedIndexPath = [CalculateModel scrollToFirstRowByDate:self.scrollDate];
+    self.selectedIndexPath = [CalculateModel convertDateToIndexPath:self.scrollDate];
     [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
