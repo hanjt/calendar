@@ -47,11 +47,12 @@
     self.dataLabel.text = [self currentDateString:self.scrollDate];
     
     self.selectedIndexPath = [CalculateModel convertDateToIndexPath:self.scrollDate];
-    [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    [self.collectionView scrollToItemAtIndexPath:[CalculateModel scrollToFirstRowByDate:self.scrollDate] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
 - (void)showInView:(UIView *)view {
     [view addSubview:self];
+    self.frame = CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.width / 7 * 6 + self.collectionView.frame.origin.y);
     [self layoutIfNeeded];
 }
 
@@ -81,7 +82,9 @@
     [super layoutIfNeeded];
     [self.collectionView reloadData];
     self.dataLabel.text = [self currentDateString:self.scrollDate];
-    [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+    if (self.scrollDate) {
+        [self.collectionView scrollToItemAtIndexPath:[CalculateModel scrollToFirstRowByDate:self.scrollDate] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    }
     self.originOffsetY = self.collectionView.contentOffset.y;
 }
 

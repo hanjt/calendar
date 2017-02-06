@@ -31,7 +31,7 @@
 
 @interface HJTDateModel : NSObject
 
-/** indexPath中的日期*/
+/** indexPath中的日期，格式为YYYY-MM-dd*/
 @property (nonatomic, strong) NSDate *date;
 
 /** indexPath中的日期是不是下个月的日期*/

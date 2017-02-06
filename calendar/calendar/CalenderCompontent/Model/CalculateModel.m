@@ -28,7 +28,11 @@
 + (NSIndexPath *)scrollToFirstRowByDate:(NSDate *)date {
     NSInteger month = [date month];
     NSInteger year = [date year] - 1901;
-    return [NSIndexPath indexPathForRow:0 inSection:(year - 1) * 12 + month - 1];
+    NSInteger firstWeekDayInMonth = [date firstWeekDayInMonth];
+    if (firstWeekDayInMonth >= 7) {
+        firstWeekDayInMonth = 0;
+    }
+    return [NSIndexPath indexPathForRow:firstWeekDayInMonth inSection:(year - 1) * 12 + month - 1];
 }
 
 + (HJTDateModel *)convertIndexPathToDate:(NSIndexPath *)indexPath {
