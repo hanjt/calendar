@@ -7,7 +7,8 @@
 //
 
 #import "HJTCalendarCell.h"
-#import "NSDate+Addtion.h"
+//#import "NSDate+Addtion.h"
+#import "HJTCalendar.h"
 #import "NSDate+convenience.h"
 #import "CalculateModel.h"
 
@@ -16,14 +17,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameOfDayLabel;
 //@property (nonatomic, strong) NSDate *currentDate;
-
+@property (nonatomic, strong) HJTCalendar *calendar;
 @end
 
 @implementation HJTCalendarCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.calendar = [[HJTCalendar alloc] init];
 }
 
 - (void)setIndexPath:(NSIndexPath *)indexPath {
@@ -40,15 +41,18 @@
 - (void)updateUI {
     HJTDateModel *model = [CalculateModel convertIndexPathToDate:self.indexPath];
     _willShowNextMonth = model.isNextMonth;
-    _selectDate = model.date;
-    NSInteger day = [_selectDate day];
-    self.numberLabel.hidden = (day <= 0);
-    self.nameOfDayLabel.hidden = (day <= 0);
-    
-    //当前cell的日期
-    self.numberLabel.text = @(day).stringValue;
-    self.nameOfDayLabel.text = [_selectDate holidayName];
-    [self changeLabelColorWithDate:_selectDate];
+    self.numberLabel.hidden = model.date ? NO : YES;
+    self.nameOfDayLabel.hidden = model.date ? NO : YES;
+
+    if (model.date) {
+        _selectDate = model.date;
+        self.calendar.date = model.date;
+        NSInteger day = [model.date day];
+        //当前cell的日期
+        self.numberLabel.text = @(day).stringValue;
+        self.nameOfDayLabel.text = [self.calendar holidayName];
+        [self changeLabelColorWithDate:model.date];
+    }
 }
 
 - (void)changeLabelColorWithDate:(NSDate *)date {

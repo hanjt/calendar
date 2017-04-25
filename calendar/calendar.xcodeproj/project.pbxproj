@@ -14,7 +14,6 @@
 		4EF8380E1BC6E3CF00012592 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF8380C1BC6E3CF00012592 /* LaunchScreen.xib */; };
 		4EF8381A1BC6E3CF00012592 /* calendarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF838191BC6E3CF00012592 /* calendarTests.m */; };
 		4EF8384F1BC7ED1200012592 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8384E1BC7ED1200012592 /* ViewController.m */; };
-		631BA0CA1DF4570E0034874D /* NSDate+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 631BA0B81DF4570E0034874D /* NSDate+Addtion.m */; };
 		631BA0CB1DF4570E0034874D /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 631BA0BA1DF4570E0034874D /* NSDate+convenience.m */; };
 		631BA0CC1DF4570E0034874D /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 631BA0BD1DF4570E0034874D /* NSDate+Helper.m */; };
 		631BA0CD1DF4570E0034874D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = 631BA0BE1DF4570E0034874D /* README.textile */; };
@@ -23,6 +22,7 @@
 		631BA0D01DF4570E0034874D /* CalculateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 631BA0C51DF4570E0034874D /* CalculateModel.m */; };
 		631BA0D11DF4570E0034874D /* HJTCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 631BA0C81DF4570E0034874D /* HJTCalendarView.m */; };
 		631BA0D21DF4570E0034874D /* HJTCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 631BA0C91DF4570E0034874D /* HJTCalendarView.xib */; };
+		63AC98071EAF0628004E7C3F /* HJTCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AC98061EAF0628004E7C3F /* HJTCalendar.m */; };
 		788F2C19408FDA9EF5FAEF34 /* Pods_calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7501CE22EBA46F1C47E989 /* Pods_calendar.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,8 +51,6 @@
 		4EF838191BC6E3CF00012592 /* calendarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = calendarTests.m; sourceTree = "<group>"; };
 		4EF8384D1BC7ED1200012592 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4EF8384E1BC7ED1200012592 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		631BA0B71DF4570E0034874D /* NSDate+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Addtion.h"; sourceTree = "<group>"; };
-		631BA0B81DF4570E0034874D /* NSDate+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Addtion.m"; sourceTree = "<group>"; };
 		631BA0B91DF4570E0034874D /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
 		631BA0BA1DF4570E0034874D /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
 		631BA0BC1DF4570E0034874D /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
@@ -66,6 +64,8 @@
 		631BA0C71DF4570E0034874D /* HJTCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJTCalendarView.h; sourceTree = "<group>"; };
 		631BA0C81DF4570E0034874D /* HJTCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJTCalendarView.m; sourceTree = "<group>"; };
 		631BA0C91DF4570E0034874D /* HJTCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HJTCalendarView.xib; sourceTree = "<group>"; };
+		63AC98051EAF0628004E7C3F /* HJTCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJTCalendar.h; sourceTree = "<group>"; };
+		63AC98061EAF0628004E7C3F /* HJTCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJTCalendar.m; sourceTree = "<group>"; };
 		6E7501CE22EBA46F1C47E989 /* Pods_calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80EC4403AC3612DD8C411C /* Pods-calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calendar/Pods-calendar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,11 +173,11 @@
 		631BA0B61DF4570E0034874D /* category */ = {
 			isa = PBXGroup;
 			children = (
-				631BA0B71DF4570E0034874D /* NSDate+Addtion.h */,
-				631BA0B81DF4570E0034874D /* NSDate+Addtion.m */,
 				631BA0B91DF4570E0034874D /* NSDate+convenience.h */,
 				631BA0BA1DF4570E0034874D /* NSDate+convenience.m */,
 				631BA0BB1DF4570E0034874D /* nsdate-helper-master */,
+				63AC98051EAF0628004E7C3F /* HJTCalendar.h */,
+				63AC98061EAF0628004E7C3F /* HJTCalendar.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -393,13 +393,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				631BA0CC1DF4570E0034874D /* NSDate+Helper.m in Sources */,
-				631BA0CA1DF4570E0034874D /* NSDate+Addtion.m in Sources */,
 				631BA0D01DF4570E0034874D /* CalculateModel.m in Sources */,
 				631BA0CE1DF4570E0034874D /* HJTCalendarCell.m in Sources */,
 				4EF838031BC6E3CF00012592 /* AppDelegate.m in Sources */,
 				4EF8384F1BC7ED1200012592 /* ViewController.m in Sources */,
 				631BA0CB1DF4570E0034874D /* NSDate+convenience.m in Sources */,
 				631BA0D11DF4570E0034874D /* HJTCalendarView.m in Sources */,
+				63AC98071EAF0628004E7C3F /* HJTCalendar.m in Sources */,
 				4EF838001BC6E3CF00012592 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
